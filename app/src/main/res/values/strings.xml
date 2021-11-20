@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AccesbilityApp</string>
+    <!--    Home Navigation-->
+    <string name="visual_elements_title">Visual Elements</string>
+    <string name="merge_composables_title">Merge Composables</string>
+    <string name="list_actions_title">List Actions</string>
+
+    <string name="accessibility_on_description">Accessibility feature is on</string>
+    <string name="accessibility_off_description">Accessibility feature is off</string>
 </resources>
