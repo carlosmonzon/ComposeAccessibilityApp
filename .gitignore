@@ -1,32 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@carlosmonzon 
-carlosmonzon
-/
-ComposeAccessibilityApp
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-ComposeAccessibilityApp/.gitignore
-@carlosmonzon
-carlosmonzon Initial commit
-Latest commit a81b061 27 minutes ago
- History
- 1 contributor
-85 lines (68 sloc)  1.4 KB
-   
 # Built application files
 *.apk
 *.aar
