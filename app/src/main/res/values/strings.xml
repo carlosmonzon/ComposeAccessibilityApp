@@ -7,4 +7,13 @@
 
     <string name="accessibility_on_description">Accessibility feature is on</string>
     <string name="accessibility_off_description">Accessibility feature is off</string>
+
+    <string name="cd_close">Close</string>
+    <string name="cd_delete">Delete</string>
+    <string name="cd_enable_custom_clickable_box">Enable custom clickable box</string>
+    <string name="cd_disable_custom_clickable_box">Disable Custom clickable box</string>
+
+    <string name="cd_enabled_state_custom_clickable_box">Custom clickable box is enabled</string>
+    <string name="cd_disabled_state_custom_clickable_box">Custom clickable box is disabled</string>
+
 </resources>

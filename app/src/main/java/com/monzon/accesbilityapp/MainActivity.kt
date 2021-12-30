@@ -3,8 +3,10 @@ package com.monzon.accesbilityapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -50,8 +52,12 @@ fun AccessibilityApp(name: String) {
                 currentRoute = HomeSections.Visual.route,
                 navigateToRoute = {})
         }
-    ) {
-        NavHost(navController = navController, startDestination = MainDestinations.HOME) {
+    ) { innerPadding ->
+        NavHost(
+            modifier = Modifier.padding(innerPadding),
+            navController = navController,
+            startDestination = MainDestinations.HOME
+        ) {
             homeNavigation(isAccessibilityEnabled = isAccessibilityEnabled)
         }
     }

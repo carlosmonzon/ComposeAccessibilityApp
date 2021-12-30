@@ -29,11 +29,18 @@ fun Visuals(isAccessibilityEnabled: Boolean = false) {
         FunctionalCheckbox()
         DecorativeCheckbox()
 
-        Section("Custom Checkbox")
+        Section("Custom selection control")
         RowCheckBox(isAccessibilityEnabled = isAccessibilityEnabled)
+
+        Section("Clickable views")
+        CustomClickableBox(isAccessibilityEnabled = isAccessibilityEnabled)
+
+        Section("Describe visual elements")
+        DeleteButton(isAccessibilityEnabled = isAccessibilityEnabled)
     }
 }
 
+// No need to add padding to Checkbox element because it is a Material Design Element
 @Composable
 private fun FunctionalCheckbox() {
     var checked by remember { mutableStateOf(false) }
@@ -50,6 +57,7 @@ private fun FunctionalCheckbox() {
     }
 }
 
+// When passing null to the onCheckedChange Material Checkbox will disable padding automatically
 @Composable
 private fun DecorativeCheckbox() {
     Row(modifier = Modifier.fillMaxWidth()) {
@@ -66,41 +74,57 @@ private fun DecorativeCheckbox() {
 @Composable
 private fun RowCheckBox(isAccessibilityEnabled: Boolean) {
     val checked = remember { mutableStateOf(false) }
+    val onClick = { checked.value = !checked.value }
     if (isAccessibilityEnabled) {
-        AcsRowCheckBox(checked)
+        AcsRowCheckBox(checked.value, onClick = onClick)
     } else {
-        NonAcsRowCheckBox(checked)
+        NonAcsRowCheckBox(checked.value, onClick = onClick)
     }
 }
 
 @Composable
-private fun NonAcsRowCheckBox(checked: MutableState<Boolean>) {
+private fun NonAcsRowCheckBox(checked: Boolean, onClick: () -> Unit) {
     Row(
         Modifier
             .toggleable(
-                value = checked.value,
-                onValueChange = { checked.value = !checked.value }
+                value = checked,
+                onValueChange = { onClick() }
             )
             .fillMaxWidth()
     ) {
-        Text("Option", Modifier.weight(1f))
-        Checkbox(checked = checked.value, onCheckedChange = null)
+        Text(
+            "Option",
+            Modifier
+                .weight(1f)
+                .padding(start = 16.dp)
+        )
+        Checkbox(
+            checked = checked,
+            modifier = Modifier.padding(end = 16.dp),
+            onCheckedChange = null
+        )
     }
 }
 
 @Composable
-private fun AcsRowCheckBox(checked: MutableState<Boolean>) {
+private fun AcsRowCheckBox(checked: Boolean, onClick: () -> Unit) {
     Row(
+        // 1. parent handles the toggleable click behavior
         Modifier
             .toggleable(
-                value = checked.value,
+                value = checked,
+                // 2. Accessibility semantics
                 role = Role.Checkbox,
-                onValueChange = { checked.value = !checked.value }
+                onValueChange = { onClick() }
             )
-            .padding(16.dp)
             .fillMaxWidth()
+            .padding(16.dp)
     ) {
         Text("Option", Modifier.weight(1f))
-        Checkbox(checked = checked.value, onCheckedChange = null)
+        // 3. pass null to the child control and handle click event on parent
+        Checkbox(
+            checked = checked,
+            onCheckedChange = null
+        )
     }
 }
