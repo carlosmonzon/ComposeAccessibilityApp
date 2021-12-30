@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.monzon.accesbilityapp.navigation.MainDestinations
 import com.monzon.accesbilityapp.R
 import com.monzon.accesbilityapp.ui.theme.AccesbilityAppTheme
 import com.monzon.accesbilityapp.ui.theme.Purple700
@@ -28,13 +29,13 @@ sealed class HomeSections(
     val resId: Int
 ) {
     object Visual : HomeSections(
-        "visual",
+        "${MainDestinations.HOME}/visual",
         Icons.Filled.Build,
         R.string.visual_elements_title
     )
 
     object Merge : HomeSections(
-        "merge",
+        "${MainDestinations.HOME}/merge",
         Icons.Filled.Menu,
         R.string.merge_composables_title
     )
