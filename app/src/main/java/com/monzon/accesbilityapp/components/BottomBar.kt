@@ -16,8 +16,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.monzon.accesbilityapp.navigation.MainDestinations
 import com.monzon.accesbilityapp.R
+import com.monzon.accesbilityapp.navigation.MainDestinations
 import com.monzon.accesbilityapp.ui.theme.AccesbilityAppTheme
 import com.monzon.accesbilityapp.ui.theme.Purple700
 import com.monzon.accesbilityapp.ui.theme.Teal200
@@ -39,12 +39,17 @@ sealed class HomeSections(
         Icons.Filled.Menu,
         R.string.merge_composables_title
     )
+
+    companion object {
+        val values = arrayOf(Visual, Merge)
+    }
 }
+
 
 @Composable
 fun AppBottomBar(
     isAccessibilityEnabled: Boolean = false,
-    items: Array<HomeSections> = arrayOf(HomeSections.Visual, HomeSections.Merge),
+    items: Array<HomeSections> = HomeSections.values,
     currentRoute: String,
     navigateToRoute: (String) -> Unit
 ) {

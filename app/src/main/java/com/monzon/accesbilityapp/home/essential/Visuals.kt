@@ -1,4 +1,4 @@
-package com.monzon.accesbilityapp.home
+package com.monzon.accesbilityapp.home.essential
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import com.monzon.accesbilityapp.components.Header
-import com.monzon.accesbilityapp.components.Section
 import com.monzon.accesbilityapp.components.RowDescription
+import com.monzon.accesbilityapp.components.Section
 
 @Composable
 fun Visuals(isAccessibilityEnabled: Boolean = false) {

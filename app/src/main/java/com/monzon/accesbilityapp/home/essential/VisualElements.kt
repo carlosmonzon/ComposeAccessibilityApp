@@ -1,4 +1,4 @@
-package com.monzon.accesbilityapp.home
+package com.monzon.accesbilityapp.home.essential
 
 import android.widget.Toast
 import androidx.compose.foundation.clickable

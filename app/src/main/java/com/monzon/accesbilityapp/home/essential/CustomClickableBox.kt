@@ -1,8 +1,9 @@
-package com.monzon.accesbilityapp.home
+package com.monzon.accesbilityapp.home.essential
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -68,13 +69,13 @@ private fun AcsCustomClickableBox(checked: Boolean, onClick: () -> Unit) {
                 }
                 .clickable(
                     onClick = onClick,
-                    // 1. Role
+                    // 2. Role
                     role = Role.Checkbox,
-                    // 2. accessibility click label
+                    // 3. accessibility click label
                     onClickLabel = clickLabel
                 )
                 .background(Color.Black)
-                // 3. sizeIn modifier set the minimum size for the inner box
+                // 4. sizeIn modifier set the minimum size for the inner box
                 .defaultSizeIn()
         )
     }

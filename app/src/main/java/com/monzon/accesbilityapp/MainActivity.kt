@@ -4,12 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
 import com.monzon.accesbilityapp.components.AccessibilityConfigToolbar
 import com.monzon.accesbilityapp.components.AppBottomBar
 import com.monzon.accesbilityapp.components.HomeSections
@@ -35,7 +39,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AccessibilityApp(name: String) {
     val isAccessibilityEnabled = remember { mutableStateOf(false) }
-    val navController = rememberNavController()
+    val appState = rememberAppState()
     Scaffold(
         topBar = {
             AccessibilityConfigToolbar(
@@ -47,15 +51,18 @@ fun AccessibilityApp(name: String) {
             )
         },
         bottomBar = {
-            AppBottomBar(
-                isAccessibilityEnabled = isAccessibilityEnabled.value,
-                currentRoute = HomeSections.Visual.route,
-                navigateToRoute = {})
+            if (appState.shouldShowBottomBar) {
+                AppBottomBar(
+                    isAccessibilityEnabled = isAccessibilityEnabled.value,
+                    currentRoute = appState.currentRoute ?: HomeSections.Visual.route,
+                    navigateToRoute = appState::navigateToBottomBarRoute
+                )
+            }
         }
     ) { innerPadding ->
         NavHost(
             modifier = Modifier.padding(innerPadding),
-            navController = navController,
+            navController = appState.navController,
             startDestination = MainDestinations.HOME
         ) {
             homeNavigation(isAccessibilityEnabled = isAccessibilityEnabled)
