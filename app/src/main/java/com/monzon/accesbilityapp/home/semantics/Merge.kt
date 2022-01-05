@@ -1,4 +1,4 @@
-package com.monzon.accesbilityapp.home.mergeelement
+package com.monzon.accesbilityapp.home.semantics
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -62,14 +62,14 @@ private fun PostMetadata(isAccessibilityEnabled: Boolean = false) {
 }
 
 @Composable
-private fun NonAcsPostMetadata(metadata: PostMetadata) {
+fun NonAcsPostMetadata(metadata: PostMetadata) {
     Row(modifier = Modifier.padding(end = 16.dp)) {
         PostMetaData(metadata = metadata)
     }
 }
 
 @Composable
-private fun AcsPostMetadata(metadata: PostMetadata) {
+fun AcsPostMetadata(metadata: PostMetadata) {
     // Merge elements below for accessibility purposes
     Row(modifier = Modifier
         .semantics(mergeDescendants = true) {}
@@ -90,6 +90,7 @@ fun PostMetaData(metadata: PostMetadata) {
         Text("${metadata.date} • ${metadata.readTimeMinutes} min read")
     }
 }
+
 data class PostMetadata(
     val id: UUID = UUID.randomUUID(),
     val date: String,

@@ -1,4 +1,4 @@
-package com.monzon.accesbilityapp.home.essential
+package com.monzon.accesbilityapp.home.essentials
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

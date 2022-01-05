@@ -1,4 +1,4 @@
-package com.monzon.accesbilityapp.home.mergeelement
+package com.monzon.accesbilityapp.home.semantics
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row

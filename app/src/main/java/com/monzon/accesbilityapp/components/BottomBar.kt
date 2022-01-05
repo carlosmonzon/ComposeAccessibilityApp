@@ -6,8 +6,9 @@ import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,20 +29,26 @@ sealed class HomeSections(
     @StringRes
     val resId: Int
 ) {
-    object Visual : HomeSections(
-        "${MainDestinations.HOME}/visual",
-        Icons.Filled.Build,
-        R.string.visual_elements_title
+    object Essentials : HomeSections(
+        "${MainDestinations.HOME}/essentials",
+        Icons.Filled.Star,
+        R.string.essentials_title
     )
 
-    object Merge : HomeSections(
-        "${MainDestinations.HOME}/merge",
-        Icons.Filled.Menu,
-        R.string.merge_composables_title
+    object Semantics : HomeSections(
+        "${MainDestinations.HOME}/semantics",
+        Icons.Filled.List,
+        R.string.semantics_title
+    )
+
+    object Headings : HomeSections(
+        "${MainDestinations.HOME}/headings",
+        Icons.Filled.PlayArrow,
+        R.string.headings_title
     )
 
     companion object {
-        val values = arrayOf(Visual, Merge)
+        val values = arrayOf(Essentials, Semantics, Headings)
     }
 }
 
@@ -75,7 +82,7 @@ fun AppBottomBar(
 
 @Composable
 private fun AcsAppBottomBar(
-    items: Array<HomeSections> = arrayOf(HomeSections.Visual, HomeSections.Merge),
+    items: Array<HomeSections> = arrayOf(HomeSections.Essentials, HomeSections.Semantics),
     currentRoute: String,
     backgroundColor: Color,
     navigateToRoute: (String) -> Unit
@@ -104,7 +111,7 @@ private fun AcsAppBottomBar(
 
 @Composable
 private fun NonAcsAppBottomBar(
-    items: Array<HomeSections> = arrayOf(HomeSections.Visual, HomeSections.Merge),
+    items: Array<HomeSections> = arrayOf(HomeSections.Essentials, HomeSections.Semantics),
     currentRoute: String,
     backgroundColor: Color,
     navigateToRoute: (String) -> Unit
@@ -136,7 +143,7 @@ private fun NonAcsAppBottomBar(
 fun AppBottomBarPreview() {
     AccesbilityAppTheme {
         val selected = remember {
-            mutableStateOf(HomeSections.Visual.route)
+            mutableStateOf(HomeSections.Essentials.route)
         }
         AppBottomBar(currentRoute = selected.value, navigateToRoute = {
             selected.value = it

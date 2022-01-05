@@ -10,7 +10,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun AccessibilityApp(name: String) {
-    val isAccessibilityEnabled = remember { mutableStateOf(false) }
+    val isAccessibilityEnabled = rememberSaveable { mutableStateOf(false) }
     val appState = rememberAppState()
     Scaffold(
         topBar = {
@@ -54,7 +54,7 @@ fun AccessibilityApp(name: String) {
             if (appState.shouldShowBottomBar) {
                 AppBottomBar(
                     isAccessibilityEnabled = isAccessibilityEnabled.value,
-                    currentRoute = appState.currentRoute ?: HomeSections.Visual.route,
+                    currentRoute = appState.currentRoute ?: HomeSections.Essentials.route,
                     navigateToRoute = appState::navigateToBottomBarRoute
                 )
             }

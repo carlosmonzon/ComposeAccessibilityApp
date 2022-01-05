@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">AccesbilityApp</string>
     <!--    Home Navigation-->
-    <string name="visual_elements_title">Visual Elements</string>
-    <string name="merge_composables_title">Merge Composables</string>
+    <string name="essentials_title">Essentials</string>
+    <string name="semantics_title">Semantics</string>
+    <string name="headings_title">Semantics</string>
     <string name="list_actions_title">List Actions</string>
 
     <string name="accessibility_on_description">Accessibility feature is on</string>
@@ -19,5 +20,7 @@
 
     <string name="unfavourite">Unfavourite</string>
     <string name="favourite">Favourite</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
 </resources>
