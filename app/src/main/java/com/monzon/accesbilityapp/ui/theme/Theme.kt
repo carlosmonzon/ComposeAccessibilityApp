@@ -30,15 +30,39 @@ private val LightColorPalette = lightColors(
     */
 )
 
+private val LightAccessibilityColorPalette = lightColors(
+    primary = Teal500,
+    primaryVariant = Teal700,
+    secondary = Brown200,
+    secondaryVariant = Brown500
+)
+
+private val DarkAccessibilityColorPalette = darkColors(
+    primary = Teal200,
+    primaryVariant = Teal700,
+    secondary = Brown200,
+    secondaryVariant = Brown500
+)
+
 @Composable
 fun AccesbilityAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
+    isAccessibilityEnabled: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
-        DarkColorPalette
+        if (isAccessibilityEnabled) {
+            DarkAccessibilityColorPalette
+        } else {
+            DarkColorPalette
+        }
+
     } else {
-        LightColorPalette
+        if (isAccessibilityEnabled) {
+            LightAccessibilityColorPalette
+        } else {
+            LightColorPalette
+        }
     }
 
     MaterialTheme(

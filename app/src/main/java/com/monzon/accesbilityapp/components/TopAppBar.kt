@@ -1,12 +1,10 @@
 package com.monzon.accesbilityapp.components
 
-import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Switch
-import androidx.compose.material.SwitchDefaults
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
@@ -19,10 +17,10 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.google.accompanist.insets.LocalWindowInsets
+import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.monzon.accesbilityapp.R
 import com.monzon.accesbilityapp.ui.theme.AccesbilityAppTheme
-import com.monzon.accesbilityapp.ui.theme.Purple700
-import com.monzon.accesbilityapp.ui.theme.Teal200
 
 @Composable
 fun AccessibilityConfigToolbar(
@@ -30,20 +28,19 @@ fun AccessibilityConfigToolbar(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
 ) {
-    val animatedColor = animateColorAsState(
-        if (checked) Teal200 else Purple700
-    )
     TopAppBar(
-        backgroundColor = animatedColor.value,
         elevation = 8.dp,
-        contentPadding = PaddingValues(horizontal = 16.dp)
+        contentPadding = rememberInsetsPaddingValues(
+            LocalWindowInsets.current.statusBars,
+            applyBottom = false,
+        )
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = title)
+            Text(text = title, modifier = Modifier.padding(start = 16.dp))
             if (checked) {
                 AcsSwitch(
                     checked = checked,
@@ -70,11 +67,7 @@ private fun AcsSwitch(checked: Boolean, onCheckedChange: ((Boolean) -> Unit)?) {
             stateDescription = stateDescriptionText
         },
         checked = checked,
-        onCheckedChange = onCheckedChange,
-        colors = SwitchDefaults.colors(
-            checkedThumbColor = Purple700,
-            uncheckedThumbColor = Teal200
-        )
+        onCheckedChange = onCheckedChange
     )
 }
 
@@ -82,11 +75,7 @@ private fun AcsSwitch(checked: Boolean, onCheckedChange: ((Boolean) -> Unit)?) {
 private fun NonAcsSwitch(checked: Boolean, onCheckedChange: ((Boolean) -> Unit)?) {
     Switch(
         checked = checked,
-        onCheckedChange = onCheckedChange,
-        colors = SwitchDefaults.colors(
-            checkedThumbColor = Purple700,
-            uncheckedThumbColor = Teal200
-        )
+        onCheckedChange = onCheckedChange
     )
 }
 
