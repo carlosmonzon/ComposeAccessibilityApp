@@ -15,5 +15,9 @@
 
     <string name="cd_enabled_state_custom_clickable_box">Custom clickable box is enabled</string>
     <string name="cd_disabled_state_custom_clickable_box">Custom clickable box is disabled</string>
+    <string name="cd_read_article">Read article</string>
+
+    <string name="unfavourite">Unfavourite</string>
+    <string name="favourite">Favourite</string>
 
 </resources>
