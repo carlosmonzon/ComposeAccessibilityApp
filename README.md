@@ -21,6 +21,7 @@ Accessibility elements off:
 <img src="screenshots/custom_action_no_acs.gif"/>
 
 Accessibility elements on:
+
 <img src="screenshots/custom_action_acs.gif"/>
 
 
