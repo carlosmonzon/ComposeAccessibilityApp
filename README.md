@@ -5,7 +5,7 @@ Jetpack Compose demo app that shows compose accessibility best practices followi
 Demo app changes between accessibility compose elements on the fly when activating the switch in the toolbar.
 It is important to turn on the screen reader available in your android phone to verify accessibility behaviors. (ie: Talkback)
 
-Related article: https://medium.com/@cmonzon/jetpack-compose-accessibility-best-practices-c7e41e4bbe57
+Related article: https://blog.thesurfcode.com/jetpack-compose-accessibility-best-practices
 
 
 ## Topics:
